@@ -1,33 +1,28 @@
 import { ObjectId } from "mongodb";
-import dbClient from "../config/dbClient.js";
+ import employeSchema from "../schema/employeSchema.js";
 
-class EmployeModels {
-  constructor() {}
+ class EmployeModels {
+   constructor() {}
 
-  async create(employe) {
-    const colEmploye = dbClient.db.collection("employe");
-    return await colEmploye.insertOne(employe);
-  }
+   async create(employe) {
+     return await employeSchema.create(employe);
+   }
 
-  async getAll() {
-    const colEmploye = dbClient.db.collection("employe");
-    return await colEmploye.find({}).toArray();
-  }
+   async getAll() {
+     return await employeSchema.find();
+   }
 
-  async getOne(id) {
-    const colEmploye = dbClient.db.collection("employe");
-    return await colEmploye.findOne({ _id: new ObjectId(id) });
-  }
+   async getOne(id) {
+     return await employeSchema.findById(id);
+   }
 
-  async delete(id) {
-    const colEmploye = dbClient.db.collection("employe");
-    return await colEmploye.deleteOne({ _id: new ObjectId(id) });
-  }
+   async delete(id) {
+     return await employeSchema.deleteOne(id);
+   }
 
-  async update(id,data) {
-    const colEmploye = dbClient.db.collection("employe");
-    return await colEmploye.updateOne({_id:new ObjectId(id)},{$set:data})
-  }
-}
+   async update(id, data) {
+     return await employeSchema.findOneAndUpdate(id, data, { new: true });
+   }
+ }
 
 export default new EmployeModels();
