@@ -1,5 +1,4 @@
-import 'dotenv/config';
-import { MongoClient } from 'mongodb';
+import "dotenv/config";
 import mongoose from "mongoose";
 
 class DbClient {

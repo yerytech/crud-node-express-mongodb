@@ -3,18 +3,18 @@ const employeScheme = new mongoose.Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true,
     },
     age: {
       type: Number,
     },
     lastName: {
       type: String,
-      require: true,
+      required: true,
     },
     adress: {
       type: String,
-      require: true,
+      required: true,
     },
     idDocument: {
       type: Number,
