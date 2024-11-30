@@ -56,7 +56,6 @@ class EmployeController {
     try {
       const data = await employeModel.updateThat(id, req.body);
       res.status(201).json(data);
-      console.log(data);
     } catch (e) {
       res.status(500).send(e);
     }
